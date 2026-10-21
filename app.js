@@ -1,7 +1,7 @@
 var autoSlideTimer = null;
 
 // ====== GANTI dengan URL Web App Apps Script kamu (berakhiran /exec) ======
-var API_URL = 'https://script.google.com/macros/s/GANTI_DENGAN_ID_DEPLOYMENT/exec';
+var API_URL = 'https://script.google.com/macros/s/AKfycbxKgnQbipwPRrwyqXWbl8N2ptwdZ3pK3-ITvI57F_4SRbY0vlOnSqLHm2ufOp_UFhLKQg/exec';
 var CACHE_KEY = 'emd_data_v1';
 
 function showError(err) {
