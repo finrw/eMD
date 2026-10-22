@@ -2,7 +2,11 @@ var autoSlideTimer = null;
 
 // ====== GANTI dengan URL Web App Apps Script kamu (berakhiran /exec) ======
 var API_URL = 'https://script.google.com/macros/s/AKfycbxKgnQbipwPRrwyqXWbl8N2ptwdZ3pK3-ITvI57F_4SRbY0vlOnSqLHm2ufOp_UFhLKQg/exec';
-var CACHE_KEY = 'emd_data_v1';
+var CACHE_KEY = 'emd_data_v2';
+
+// Folder gambar di repo GitHub (relatif terhadap index.html)
+// HARUS dideklarasikan sebelum render pertama di bawah
+var IMG_FOLDER = 'foto/';
 
 function showError(err) {
   document.getElementById('bannerContainer').innerHTML =
@@ -34,9 +38,6 @@ fetch(API_URL)
   .catch(function (err) {
     if (!renderedFromCache) showError(err);
   });
-
-// Folder gambar di repo GitHub (relatif terhadap index.html)
-var IMG_FOLDER = 'foto/';
 
 function normalizeImageUrl(url, width) {
   if (!url) return url;
@@ -88,7 +89,7 @@ function renderToko(res) {
       var linkGambar = normalizeImageUrl(row[1], 1200);
       bannerHTML += '<div class="banner-card">';
       bannerHTML += '<img src="' + escapeHtml(linkGambar) + '" alt="' + escapeHtml(namaBanner || 'Banner') + '" loading="lazy" ' +
-        'onerror="this.closest(\'.banner-card\').remove(); syncBannerDots();">';
+        'onerror="console.warn(\'Banner gagal dimuat:\', this.src); this.closest(\'.banner-card\').remove(); syncBannerDots();">';
       if (namaBanner) {
         bannerHTML += '<span class="banner-label">' + escapeHtml(namaBanner) + '</span>';
       }
